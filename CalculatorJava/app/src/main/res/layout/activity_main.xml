@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="#1C1C1C"
-    >
+    android:background="#1C1C1C">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,14 +15,17 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="80sp"
         android:layout_marginBottom="10dp">
-        <EditText
+        <TextView
+            android:id="@+id/calText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="0"
             android:textColorHint="@color/white"
-            android:textSize="100sp"
-            android:gravity="end">
-        </EditText>
+            android:textSize="75sp"
+            android:gravity="end"
+            android:textColor="@color/white"
+            android:maxLength="9">
+        </TextView>
     </LinearLayout>
 
     <LinearLayout
@@ -223,7 +225,8 @@
                     android:layout_height="match_parent"
                     android:text="6"
                     android:backgroundTint="#505050"
-                    android:textColor="@color/white"android:textSize="25sp">
+                    android:textColor="@color/white"
+                    android:textSize="25sp">
                 </Button>
             </LinearLayout>
             <LinearLayout
