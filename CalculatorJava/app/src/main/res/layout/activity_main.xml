@@ -19,7 +19,7 @@
             android:id="@+id/calText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="0"
+            android:text="0"
             android:textColorHint="@color/white"
             android:textSize="75sp"
             android:gravity="end"

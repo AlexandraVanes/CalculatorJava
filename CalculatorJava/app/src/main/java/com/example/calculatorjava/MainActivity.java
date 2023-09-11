@@ -11,13 +11,15 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button0, button1, button2, button3, button4, button5, button6, button7, button8,button9, addButton, subButton, divButton, clearButton, equalButton, dotButton, multButton, negButton;
+    Button button0, button1, button2, button3, button4, button5, button6, button7, button8,button9, addButton, subButton, divButton, clearButton, equalButton, dotButton, multButton, negButton, percentageButton;
 
     TextView CalculationView;
 
     float valueOne, valueTwo;
 
-    boolean isAddition, isSubstraction, isMultiplication, isDivision, isDecimal, isPercentage;
+
+
+    boolean isAddition, isSubstraction, isMultiplication, isDivision, isNegative, isDecimal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         multButton = findViewById(R.id.Multiply);
         equalButton = findViewById(R.id.Equal);
         negButton = findViewById(R.id.Negative_Sign);
+        percentageButton = findViewById(R.id.Percentage);
         CalculationView = findViewById(R.id.calText);
 
         button0.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CalculationView.setText(CalculationView.getText().toString() + "1");
+                    CalculationView.setText(CalculationView.getText().toString() + "1");
             }
         });
 
@@ -124,13 +127,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 CalculationView.setText(CalculationView.getText().toString() + ".");
+                isDecimal = true;
             }
         });
 
         negButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                CalculationView.setText("-" + CalculationView.getText().toString());
+                    valueOne = Float.parseFloat(CalculationView.getText() + "");
+                    CalculationView.setText(valueOne * -1 + "");
+            }
+        });
+
+        percentageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                valueOne = Float.parseFloat(CalculationView.getText() + "");
+                CalculationView.setText(valueOne / 100 + "");
             }
         });
 
@@ -193,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
 
         equalButton.setOnClickListener(new View.OnClickListener() {
             @Override
