@@ -8,6 +8,7 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                CalculationView.setText(" ");
+                CalculationView.setText("");
             }
         });
 
@@ -134,8 +135,14 @@ public class MainActivity extends AppCompatActivity {
         negButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                Toast.makeText(MainActivity.this, CalculationView.getText(), Toast.LENGTH_SHORT).show();
+                if(CalculationView.getText() == ""){
+                    CalculationView.setText("-" + CalculationView.getText().toString());
+                }
+                else {
                     valueOne = Float.parseFloat(CalculationView.getText() + "");
                     CalculationView.setText(valueOne * -1 + "");
+                }
             }
         });
 
@@ -205,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
                     isDivision = true;
                     CalculationView.setText(null);
                 }
+
             }
         });
 
@@ -233,10 +241,15 @@ public class MainActivity extends AppCompatActivity {
                     isMultiplication = false;
                 }
 
-                if (isDivision == true)
+                if (isDivision)
                 {
-                    CalculationView.setText(valueOne / valueTwo + "");
-                    isDivision = false;
+                    if (valueTwo != 0) {
+                        CalculationView.setText(valueOne / valueTwo + "");
+                        isDivision = false;
+                    }
+                    else {
+                        CalculationView.setText("ERROR");
+                    }
                 }
             }
         });
